@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=""base :: headstuff"></head>
+<body>
+<h1>Todo Form</h1>
+<form action="#" th:action="@{/process}" th:object="${message}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    Content :<input type="text" th:field="*{content}"/>
+    <span th:if="${#fields.hasErrors('content')}"
+          th:errors="*{content}"></span><br/>
+    Date :<input type="text" th:field="*{date}"/>
+    <span th:if="${#fields.hasErrors('date')}"
+          th:errors="*{date}"></span><br/>
+    Sentby :<input type="text" th:field="*{sentby}"/>
+    <span th:if="${#fields.hasErrors('sentby')}"
+          th:errors="*{sentby}"></span>
+    <br/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

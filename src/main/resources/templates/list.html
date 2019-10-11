@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Course List</h1>
+<a href="/add">Add a Message</a><br />
+<div th:each="message : ${messages}">
+<div th:if="${message.sentby} != null">
+    <img th:src="${message.sentby}" /><hr />
+</div>
+    <h3 th:text="${message.sentby}"></h3><h4 th:text="${message.name}"><</h4>
+</div>
+</body>
+
+
+
+<table>
+    <tr>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Sentby</th>
+        <td>Actions</td>
+    </tr>
+    <tr th:each="message : ${messages}">
+        <td th:text="${message.content}"></td>
+        <td th:text="${message.date}"></td>
+        <td th:text="${message.sentby}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${message.id})}">Update</a> -
+            <a th:href="@{/create/{id}(id=${message..id})}">Create</a>-
+            <a th:href="@{/delete/{id}(id=${message..id})}">Delete</a>
+        </td></tr>
+</table>
+</body>
+</html>
